@@ -1,7 +1,13 @@
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { pokemonReducer } from './redux/reducers/pokemonReducer.js';
+import { cartReducer } from './redux/reducers/cartReducer.js';
 
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 
-export const store = createStore(pokemonReducer, composeWithDevTools());
+const reducer = combineReducers({
+  pokemons: pokemonReducer,
+  cart: cartReducer,
+});
+
+export const store = createStore(reducer, composeWithDevTools());
