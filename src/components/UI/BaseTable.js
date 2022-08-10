@@ -26,7 +26,7 @@ const BaseTable = ({ data, cartTable = false }) => {
         <tbody>
           {data.map((pokemon) => {
             return (
-              <tr className="py-4 border-b" key={pokemon.name || pokemon.content.name}>
+              <tr className="py-4 border-b hover:bg-gray-100" key={pokemon.name || pokemon.content.name}>
                 <td className="uppercase py-2">{pokemon.name || pokemon.content.name}</td>
                 <td className="py-2">
                   <div>
