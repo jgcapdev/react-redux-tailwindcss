@@ -10,10 +10,13 @@ const Home = () => {
 
   useEffect(() => {
     if (cart.length !== 0) {
-      cart.forEach((c) => {
-        pokemonService.pokemonDetail(c.content.name).then((pk) => {
-          setPokemons(pokemons.concat(pk));
+      const fetchData = () => {
+        return cart.map((c) => {
+          return pokemonService.pokemonDetail(c.content.name).then((pk) => pk);
         });
+      };
+      Promise.all(fetchData()).then((data) => {
+        setPokemons(pokemons.concat(data));
       });
     }
   }, [cart]);
@@ -22,7 +25,15 @@ const Home = () => {
     <div>
       <BaseTitle title="Welcome to React, Redux, Tailwind CSS - Pokestore" />
 
-      {console.log(pokemons)}
+      {pokemons.length === 0 ? (
+        <BaseTitle title="There are no Pokemons at the moment" />
+      ) : (
+        <div className="columns-3">
+          {pokemons.map((poke) => (
+            <img key={poke.id} className="w-full aspect-square" src={poke.sprites.front_default} alt={poke.name} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
