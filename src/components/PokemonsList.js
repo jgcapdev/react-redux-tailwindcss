@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { initPokemons } from '../redux/actions/pokemons/actions.js';
 import pokemonService from '../services/pokemons.js';
+import { addToCart } from '../redux/actions/cart/actions.js';
 
 import BaseTitle from './UI/BaseTitle.js';
 
@@ -16,6 +18,10 @@ const PokemonsList = () => {
       });
     }
   }, [dispatch, pokemons.length]);
+
+  const addPokemon = (pokemon) => {
+    dispatch(addToCart(pokemon));
+  };
 
   return (
     <div>
@@ -33,9 +39,12 @@ const PokemonsList = () => {
             {pokemons.map((pokemon) => {
               return (
                 <tr className="py-4 border-b" key={pokemon.name}>
-                  <td className="py-2">{pokemon.name}</td>
+                  <td className="uppercase py-2">{pokemon.name}</td>
                   <td className="py-2">
                     <button
+                      onClick={() => {
+                        addPokemon(pokemon);
+                      }}
                       type="button"
                       className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
                     >
