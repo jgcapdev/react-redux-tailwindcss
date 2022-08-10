@@ -1,3 +1,3 @@
 # React - Redux - TailwindCSS
 
-To install Redux DevTools as a NPM execute: `"redux-devtools-extension": "^2.13.9"`
+To install Redux DevTools as a NPM execute: `npm install --save-dev redux-devtools-extension` and move inside **dependencies**.
