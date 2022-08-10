@@ -7,11 +7,12 @@ export const cartReducer = (state = [], action) => {
 
       if (!isPokemon) {
         return [...state, action.payload];
+      } else {
+        return state;
       }
-      break;
 
     case DELETE_FROM_CART:
-      return state.filter((item) => item.id !== action.payload);
+      return state.filter((pk) => pk.content.name !== action.payload.content.name);
     default:
       return state;
   }

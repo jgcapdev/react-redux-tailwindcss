@@ -9,9 +9,9 @@ export const addToCart = (content) => {
   };
 };
 
-export const deleteFromCart = (id) => {
+export const deleteFromCart = (pokemon) => {
   return {
     type: DELETE_FROM_CART,
-    payload: id,
+    payload: pokemon,
   };
 };
