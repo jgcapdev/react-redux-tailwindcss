@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { addToCart, deleteFromCart } from '../../redux/actions/cart/actions';
 import BaseButton from './BaseButton';
 
@@ -38,7 +39,9 @@ const BaseTable = ({ data, cartTable = false }) => {
                       />
                     ) : (
                       <>
-                        <BaseButton title="View Details" />
+                        <Link title="View Details" className="link--button" to={`/pokemon/${pokemon.content.name}`}>
+                          View Details
+                        </Link>
                         <BaseButton
                           title="Delete"
                           primary={false}
