@@ -11,12 +11,12 @@ const Home = () => {
   useEffect(() => {
     if (cart.length !== 0) {
       const fetchData = () => {
-        return cart.map((c) => {
-          return pokemonService.pokemonDetail(c.content.name).then((pk) => pk);
+        return cart.map((elem) => {
+          return pokemonService.pokemonDetail(elem.content.name).then((poke) => poke);
         });
       };
-      Promise.all(fetchData()).then((data) => {
-        setPokemons(pokemons.concat(data));
+      Promise.all(fetchData()).then((poke) => {
+        setPokemons(pokemons.concat(poke));
       });
     }
   }, [cart]);
@@ -28,11 +28,14 @@ const Home = () => {
       {pokemons.length === 0 ? (
         <BaseTitle title="There are no Pokemons at the moment" />
       ) : (
-        <div className="columns-3">
-          {pokemons.map((poke) => (
-            <img key={poke.id} className="w-full aspect-square" src={poke.sprites.front_default} alt={poke.name} />
-          ))}
-        </div>
+        <>
+          <h2 className="text-center text-2xl font-bold">Your Pokemons in the cart are: </h2>
+          <div className="columns-3 text-center">
+            {pokemons.map((poke) => (
+              <img key={poke.id} className="aspect-square mx-auto" src={poke.sprites.front_default} alt={poke.name} />
+            ))}
+          </div>
+        </>
       )}
     </div>
   );

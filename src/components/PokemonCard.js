@@ -1,5 +1,4 @@
 const PokemonCard = ({ pokemon }) => {
-  console.log(pokemon);
   return (
     pokemon && (
       <div className="flex justify-center">

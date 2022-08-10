@@ -10,7 +10,7 @@ const Cart = () => {
     <div>
       <BaseTitle title="Cart" />
 
-      {cart.length === 0 ? <BaseTitle title="There are no pokemons in the cart" /> : <BaseTable data={cart} cartTable />}
+      {cart.length === 0 ? <BaseTitle title="There are no Pokemons in the cart" /> : <BaseTable data={cart} cartTable />}
     </div>
   );
 };
